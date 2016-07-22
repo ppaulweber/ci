@@ -164,6 +164,7 @@ function worker
     $bin worker \
          --work-dir               $worker_dir \
          --tsa-host               $server_addr \
+         --tsa-port               $server_port \
          --tsa-public-key         $server_key_public \
          --tsa-worker-private-key $worker_key_private
 }
