@@ -23,7 +23,7 @@
 #   
 
 app=`basename $0`
-cwd=`pwd`
+cwd=`pwd -P`
 dir=`dirname $(realpath $0)`
 
 cfg_default=etc/ci.conf
