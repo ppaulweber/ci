@@ -175,13 +175,16 @@ function server
 
     message "starting concourse server"
     
-    # $bin web
-    ## TODO: FIXME: @ppaulweber: continue wrapper call of concourse for server application
-    error "unimplemented"
+    $bin web \
+         --github-auth-client-id=$github_auth_client_id \
+         --github-auth-client-secret=$github_auth_client_secret \
+         --github-auth-user=$github_auth_users \
+         --session-signing-key $server_key_signing_private \
+         --tsa-host-key $server_key_private \
+         --tsa-authorized-keys $server_key_authorized_workers \
+         --postgres-data-source $database_addr \
+         --external-url $server_url
 }
-
-
-
 
 
 case "$cmd" in
