@@ -199,3 +199,9 @@ case "$cmd" in
         error "invalid command '$cmd' provided"
         ;;
 esac
+
+
+# cd jq
+# autoreconf -i
+# ./configure --disable-maintainer-mode
+# make
