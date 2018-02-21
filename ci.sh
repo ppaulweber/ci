@@ -45,7 +45,7 @@ function message
 
 function usage
 {
-    message "usage: $app <worker|server|update|remove> [config]"
+    message "usage: $app <server|worker|retire|update|remove> [config]"
 }
 
 function info
@@ -187,10 +187,24 @@ function server
          --external-url $server_url
 }
 
+function retire
+{
+    check_if_bin_exists_else_fetch_it
+
+    message "retire concourse worker"
+
+    $bin retire-worker \
+         --tsa-host               $server_addr \
+         --tsa-port               $server_port \
+         --tsa-public-key         $server_key_public \
+         --tsa-worker-private-key $worker_key_private
+}
+
 
 case "$cmd" in
-    worker);&
     server);&
+    worker);&
+    retire);&
     update);&
     remove)
         $cmd
