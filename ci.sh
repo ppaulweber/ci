@@ -152,24 +152,6 @@ function check_if_bin_exists_else_fetch_it
     fi
 }
 
-function worker
-{
-    check_if_bin_exists_else_fetch_it
-    
-    mkdir -p $worker_dir
-    
-    
-    message "starting concourse worker"
-    
-    $bin worker \
-         --work-dir               $worker_dir \
-         --tsa-host               $server_addr \
-         --tsa-port               $server_port \
-         --tsa-public-key         $server_key_public \
-         --tsa-worker-private-key $worker_key_private
-}
-
-
 function server
 {
     check_if_bin_exists_else_fetch_it
@@ -187,6 +169,22 @@ function server
          --external-url $server_url
 }
 
+function worker
+{
+    check_if_bin_exists_else_fetch_it
+
+    mkdir -p $worker_dir
+
+    message "starting concourse worker"
+
+    $bin worker \
+         --work-dir               $worker_dir \
+         --tsa-host               $server_addr \
+         --tsa-port               $server_port \
+         --tsa-public-key         $server_key_public \
+         --tsa-worker-private-key $worker_key_private
+}
+
 function retire
 {
     check_if_bin_exists_else_fetch_it
@@ -201,18 +199,19 @@ function retire
 }
 
 
-case "$cmd" in
-    server);&
-    worker);&
-    retire);&
-    update);&
-    remove)
-        $cmd
-        ;;
-    *)
-        error "invalid command '$cmd' provided"
-        ;;
-esac
+if [ "$cmd" = "remove" ]; then
+    $cmd
+elif [ "$cmd" = "update" ]; then
+    $cmd
+elif [ "$cmd" = "server" ]; then
+    $cmd
+elif [ "$cmd" = "worker" ]; then
+    $cmd
+elif [ "$cmd" = "retire" ]; then
+    $cmd
+else
+    error "invalid command '$cmd' provided"
+fi
 
 
 # cd jq
