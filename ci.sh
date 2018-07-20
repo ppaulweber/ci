@@ -27,7 +27,7 @@ cwd=`pwd -P`
 dir=`dirname $(realpath $0)`
 
 cfg_default=etc/ci.conf
-cfg_example=etc/ci.example.conf
+cfg_example=etc/example.conf
 
 u=`tput smul`
 u_=`tput rmul`
