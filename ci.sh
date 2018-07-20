@@ -65,6 +65,10 @@ function main
 	$cmd
     elif [ "$cmd" = "land" ]; then
 	retire
+    elif [ "$cmd" = "start" ]; then
+	$cmd
+    elif [ "$cmd" = "stop" ]; then
+	$cmd
     else
 	error "invalid command '$cmd' provided"
     fi
@@ -1092,6 +1096,34 @@ function execute
     else
 	(cd ${bin_path}; cmd /c ${bin_name}${bin_exe})
     fi
+}
+
+function start
+{
+    if [ "${plat}" != "windows" ]; then
+	$bin $1
+    else
+	(cd ${bin_path}; cmd /c ${bin_name}${bin_exe})
+    fi
+
+    if [ "${plat}" == "linux" ]; then
+	iptables -I FORWARD -j ACCEPT
+    fi
+
+    ./ci.sh worker &
+}
+
+function stop
+{
+    if [ "${plat}" == "windows" ]; then
+	return
+    fi
+
+    ./ci.sh retire
+
+    sleep 5
+
+    /sbin/reboot
 }
 
 if [ "$dir" != "$cwd" ]; then
