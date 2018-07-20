@@ -179,8 +179,7 @@ function worker
 
     $bin worker \
          --work-dir               $worker_dir \
-         --tsa-host               $server_addr \
-         --tsa-port               $server_port \
+         --tsa-host               $server_addr:$server_port \
          --tsa-public-key         $server_key_public \
          --tsa-worker-private-key $worker_key_private
 }
@@ -192,8 +191,7 @@ function retire
     message "retire concourse worker"
 
     $bin retire-worker \
-         --tsa-host               $server_addr \
-         --tsa-port               $server_port \
+         --tsa-host               $server_addr:$server_port \
          --tsa-public-key         $server_key_public \
          --tsa-worker-private-key $worker_key_private
 }
