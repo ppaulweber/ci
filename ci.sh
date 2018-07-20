@@ -22,13 +22,6 @@
 #   along with ci. If not, see <http://www.gnu.org/licenses/>.
 #
 
-app=`basename $0`
-cwd=`pwd -P`
-dir=`dirname $(realpath $0)`
-
-cfg_default=etc/ci.conf
-cfg_example=etc/example.conf
-
 u=`tput smul`
 u_=`tput rmul`
 b=`tput bold`
@@ -65,6 +58,124 @@ function error
     exit -1
 }
 
+cfg_default=etc/ci.conf
+cfg_example=etc/example.conf
+
+url=https://github.com/concourse/concourse/releases
+bin_path=bin
+bin_name=concourse
+bin_ext=''
+arch="amd64"
+plat=""
+if [ "$OSTYPE" == "linux-gnu" ]; then
+    plat="linux"
+elif [ "$OSTYPE" == "darwin*" ]; then
+    plat="darwin"
+elif [ "$OSTYPE" == "cygwin" ]; then
+    plat="windows"
+    bin_ext=".exe"
+else
+    error "unsupported system '$OSTYPE'"
+fi
+
+file=concourse_${plat}_${arch}${bin_ext}
+bin=${bin_path}/${bin_name}${bin_ext}
+app=`basename $0`
+cwd=`pwd -P`
+dir=`dirname $(realpath $0)`
+
+
+function remove
+{
+    if [ -d $bin_path ]; then
+        rm -f $bin_path/*
+        rmdir $bin_path
+        message "removed all concourse binaries from path '$bin_path'"
+    fi
+}
+
+
+function update
+{
+    mkdir -p $bin_path
+    
+    tag=`curl -s -# ${url}/latest | egrep -o 'tag/(.*)\">' | sed 's/tag\///' | sed 's/\">//'`
+    info "latest version ${tag}"
+    wget -q --show-progress ${url}/download/${tag}/${file}
+
+    chmod 755 $file
+    version=`./$file -v`
+    mv $file $version
+    
+    rm -f $bin
+    ln -s $version $bin_name
+    mv $version  $bin_path
+    mv $bin_name $bin_path
+    
+    if [ ! -f $bin ]; then
+        error "'$bin' could not be installed"
+    fi
+    
+    message "updated to concourse version '$version' for '$plat' and '$arch'"
+}
+
+
+function check_if_bin_exists_else_fetch_it
+{
+    if [ ! -f $bin ]; then
+        warning "'$bin' not found, trying to fetch latest version"
+        update
+    fi
+}
+
+
+function server
+{
+    check_if_bin_exists_else_fetch_it
+
+    message "starting concourse server"
+    
+    $bin web \
+         --github-auth-client-id=$github_auth_client_id \
+         --github-auth-client-secret=$github_auth_client_secret \
+         --github-auth-user=$github_auth_users \
+         --session-signing-key $server_key_signing_private \
+         --tsa-host-key $server_key_private \
+         --tsa-authorized-keys $server_key_authorized_workers \
+         --postgres-data-source $database_addr \
+         --external-url $server_url
+}
+
+
+function worker
+{
+    check_if_bin_exists_else_fetch_it
+
+    mkdir -p $worker_dir
+
+    message "starting concourse worker"
+
+    $bin worker \
+         --work-dir               $worker_dir \
+         --tsa-host               $server_addr:$server_port \
+         --tsa-public-key         $server_key_public \
+         --tsa-worker-private-key $worker_key_private
+}
+
+
+function retire
+{
+    check_if_bin_exists_else_fetch_it
+
+    message "retire concourse worker"
+
+    $bin retire-worker \
+         --tsa-host               $server_addr:$server_port \
+         --tsa-public-key         $server_key_public \
+         --tsa-worker-private-key $worker_key_private
+}
+
+
 
 if [ "$dir" != "$cwd" ]; then
     error "$app has to be executed inside its root directory!"
@@ -74,8 +185,6 @@ if [ ! -f $bin ]; then
     warning "'$bin' not found, trying to fetch latest version"
     update
 fi
-
-
 
 cmd=$1
 if [ -z "$cmd" ]; then
@@ -99,102 +208,8 @@ fi
 
 source $cfg
 
+
 ## TODO: FIXME: @ppaulweber: add config file checks here!!!
-
-
-
-bin=$bin_path/$bin_name
-
-function remove
-{
-    if [ -d $bin_path ]; then
-        rm -f $bin_path/*
-        rmdir $bin_path
-        message "removed all concourse binaries from path '$bin_path'"
-    fi
-}
-
-function update
-{
-    ## TODO: FIXME: @ppaulweber: fetching (aka. updating) works only for linux at the moment
-    # concourse_darwin_amd64
-    # concourse_linux_amd64
-    # concourse_windows_amd64.exe 
-    
-    file=concourse_${plat}_${arch}
-    
-    mkdir -p $bin_path
-    
-    tag=`curl https://github.com/concourse/concourse/releases/latest | egrep -o 'tag/(.*)\">' | sed 's/tag\///' | sed 's/\">//'`
-    wget https://github.com/concourse/concourse/releases/download/$tag/$file
-    
-    chmod 755 $file
-    version=`./$file -v`
-    mv $file $version
-    
-    rm -f $bin
-    ln -s $version $bin_name
-    mv $version  $bin_path
-    mv $bin_name $bin_path
-    
-    if [ ! -f $bin ]; then
-        error "'$bin' could not be installed"
-    fi
-    
-    message "updated to concourse version '$version' for '$plat' and '$arch'"
-}
-
-function check_if_bin_exists_else_fetch_it
-{
-    if [ ! -f $bin ]; then
-        warning "'$bin' not found, trying to fetch latest version"
-        update
-    fi
-}
-
-function server
-{
-    check_if_bin_exists_else_fetch_it
-
-    message "starting concourse server"
-    
-    $bin web \
-         --github-auth-client-id=$github_auth_client_id \
-         --github-auth-client-secret=$github_auth_client_secret \
-         --github-auth-user=$github_auth_users \
-         --session-signing-key $server_key_signing_private \
-         --tsa-host-key $server_key_private \
-         --tsa-authorized-keys $server_key_authorized_workers \
-         --postgres-data-source $database_addr \
-         --external-url $server_url
-}
-
-function worker
-{
-    check_if_bin_exists_else_fetch_it
-
-    mkdir -p $worker_dir
-
-    message "starting concourse worker"
-
-    $bin worker \
-         --work-dir               $worker_dir \
-         --tsa-host               $server_addr:$server_port \
-         --tsa-public-key         $server_key_public \
-         --tsa-worker-private-key $worker_key_private
-}
-
-function retire
-{
-    check_if_bin_exists_else_fetch_it
-
-    message "retire concourse worker"
-
-    $bin retire-worker \
-         --tsa-host               $server_addr:$server_port \
-         --tsa-public-key         $server_key_public \
-         --tsa-worker-private-key $worker_key_private
-}
 
 
 if [ "$cmd" = "remove" ]; then
