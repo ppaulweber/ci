@@ -1,3 +1,4 @@
-bin
-obj
-etc/ci.conf
+/.attic
+/bin
+/obj
+/etc/ci.conf
