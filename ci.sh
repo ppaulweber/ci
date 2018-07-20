@@ -250,7 +250,9 @@ function server
     #export CONCOURSE_CLI_ARTIFACTS_DIR=
 
     # Log database queries.
-    #export CONCOURSE_LOG_DB_QUERIES=
+    if [ "$server_log_database_queries" == "true" ]; then
+	export CONCOURSE_LOG_DB_QUERIES=1
+    fi
 
     # Interval on which to run build tracking. (default: 10s)
     #export CONCOURSE_BUILD_TRACKER_INTERVAL=
