@@ -38,7 +38,9 @@ function message
 
 function usage
 {
-    message "usage: $app <server|worker|retire|update|remove> [config]"
+    message "usage: $app <install|remove>"
+    message "       $app <server> [config]"
+    message "       $app <worker|retire> [config]"
 }
 
 function info
