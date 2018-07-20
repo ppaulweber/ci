@@ -176,25 +176,25 @@ function server
     # API based on https://concourse-ci.org version 3.14.1
 
     # Minimum level [debug|info|error|fatal] of logs to see. (default: info)
-    #export CONCOURSE_LOG_LEVEL]
+    #export CONCOURSE_LOG_LEVEL=
 
     # IP address on which to listen for web traffic. (default: 0.0.0.0)
-    #export CONCOURSE_BIND_IP]
+    #export CONCOURSE_BIND_IP=
 
     # Port on which to listen for HTTP traffic. (default: 8080)
-    #export CONCOURSE_BIND_PORT]
+    #export CONCOURSE_BIND_PORT=
 
     # Set secure flag on auth cookies
-    #export CONCOURSE_COOKIE_SECURE]
+    #export CONCOURSE_COOKIE_SECURE=
 
     # Port on which to listen for HTTPS traffic.
-    #export CONCOURSE_TLS_BIND_PORT]
+    #export CONCOURSE_TLS_BIND_PORT=
 
     # File containing an SSL certificate.
-    #export CONCOURSE_TLS_CERT]
+    #export CONCOURSE_TLS_CERT=
 
     # File containing an RSA private key, used to encrypt HTTPS traffic.
-    #export CONCOURSE_TLS_KEY]
+    #export CONCOURSE_TLS_KEY=
 
     # URL used to reach any ATC from the outside world.
     # (default: http://127.0.0.1:8080)
@@ -202,205 +202,205 @@ function server
 
     # URL used to reach this ATC from other ATCs in the cluster.
     # (default: http://127.0.0.1:8080)
-    #export CONCOURSE_PEER_URL]
+    #export CONCOURSE_PEER_URL=
 
     # Length of time for which tokens are valid.
     # Afterwards, users will have to log back in. (default: 24h)
-    #export CONCOURSE_AUTH_DURATION]
+    #export CONCOURSE_AUTH_DURATION=
 
     # URL used as the base of OAuth redirect URIs.
     # If not specified, the external URL is used.
-    #export CONCOURSE_OAUTH_BASE_URL]
+    #export CONCOURSE_OAUTH_BASE_URL=
 
     # A 16 or 32 length key used to encrypt sensitive information
     # before storing it in the database.
-    #export CONCOURSE_ENCRYPTION_KEY]
+    #export CONCOURSE_ENCRYPTION_KEY=
 
     # Encryption key previously used for encrypting sensitive information.
     # If provided without a new key, data is encrypted.
     # If provided with a new key, data is re-encrypted.
-    #export CONCOURSE_OLD_ENCRYPTION_KEY]
+    #export CONCOURSE_OLD_ENCRYPTION_KEY=
 
     # IP address on which to listen for the pprof debugger endpoints.
     # (default: 127.0.0.1)
-    #export CONCOURSE_DEBUG_BIND_IP]
+    #export CONCOURSE_DEBUG_BIND_IP=
 
     # Port on which to listen for the pprof debugger endpoints. (default: 8079)
-    #export CONCOURSE_DEBUG_BIND_PORT]
+    #export CONCOURSE_DEBUG_BIND_PORT=
 
     # File containing an RSA private key, used to sign session tokens.
     export CONCOURSE_SESSION_SIGNING_KEY=$server_key_signing_private
 
     # Length of time for a intercepted session to be idle before terminating.
     # (default: 0m)
-    #export CONCOURSE_INTERCEPT_IDLE_TIMEOUT]
+    #export CONCOURSE_INTERCEPT_IDLE_TIMEOUT=
 
     # Interval on which to check for new versions of resources. (default: 1m)
-    #export CONCOURSE_RESOURCE_CHECKING_INTERVAL]
+    #export CONCOURSE_RESOURCE_CHECKING_INTERVAL=
 
     # Method by which a worker is selected during container placement.
     # (default: volume-locality)
-    #export CONCOURSE_CONTAINER_PLACEMENT_STRATEGY]
+    #export CONCOURSE_CONTAINER_PLACEMENT_STRATEGY=
 
     # How long to wait for Baggageclaim to send the response header.
     # (default: 1m)
-    #export CONCOURSE_BAGGAGECLAIM_RESPONSE_HEADER_TIMEOUT]
+    #export CONCOURSE_BAGGAGECLAIM_RESPONSE_HEADER_TIMEOUT=
 
     # Directory containing downloadable CLI binaries.
-    #export CONCOURSE_CLI_ARTIFACTS_DIR]
+    #export CONCOURSE_CLI_ARTIFACTS_DIR=
 
     # Log database queries.
-    #export CONCOURSE_LOG_DB_QUERIES]
+    #export CONCOURSE_LOG_DB_QUERIES=
 
     # Interval on which to run build tracking. (default: 10s)
-    #export CONCOURSE_BUILD_TRACKER_INTERVAL]
+    #export CONCOURSE_BUILD_TRACKER_INTERVAL=
 
     # Default build logs to retain, 0 means all
-    #export CONCOURSE_DEFAULT_BUILD_LOGS_TO_RETAIN]
+    #export CONCOURSE_DEFAULT_BUILD_LOGS_TO_RETAIN=
 
     # Maximum build logs to retain, 0 means not specified.
     # Will override values configured in jobs
-    #export CONCOURSE_MAX_BUILD_LOGS_TO_RETAIN]
+    #export CONCOURSE_MAX_BUILD_LOGS_TO_RETAIN=
 
     # Print the current database version and exit
-    #export CONCOURSE_CURRENT_DB_VERSION]
+    #export CONCOURSE_CURRENT_DB_VERSION=
 
     # Print the max supported database version and exit
-    #export CONCOURSE_SUPPORTED_DB_VERSION]
+    #export CONCOURSE_SUPPORTED_DB_VERSION=
 
     # Migrate to the specified database version and exit
-    #export CONCOURSE_MIGRATE_DB_TO_VERSION]
+    #export CONCOURSE_MIGRATE_DB_TO_VERSION=
 
     # Username to use for basic auth.
-    #export CONCOURSE_BASIC_AUTH_USERNAME]
+    #export CONCOURSE_BASIC_AUTH_USERNAME=
 
     # Password to use for basic auth.
-    #export CONCOURSE_BASIC_AUTH_PASSWORD]
+    #export CONCOURSE_BASIC_AUTH_PASSWORD=
 
     # Application client ID for enabling Bitbucket OAuth
-    #export CONCOURSE_BITBUCKET_CLOUD_AUTH_CLIENT_ID]
+    #export CONCOURSE_BITBUCKET_CLOUD_AUTH_CLIENT_ID=
 
     # Application client secret for enabling Bitbucket OAuth
-    #export CONCOURSE_BITBUCKET_CLOUD_AUTH_CLIENT_SECRET]
+    #export CONCOURSE_BITBUCKET_CLOUD_AUTH_CLIENT_SECRET=
 
     # Bitbucket users that are allowed to log in
-    #export CONCOURSE_BITBUCKET_CLOUD_AUTH_USER]
+    #export CONCOURSE_BITBUCKET_CLOUD_AUTH_USER=
 
     # Bitbucket teams which members are allowed to log in
-    #export CONCOURSE_BITBUCKET_CLOUD_AUTH_TEAM]
+    #export CONCOURSE_BITBUCKET_CLOUD_AUTH_TEAM=
 
     # Bitbucket repositories whose members are allowed to log in
-    #export CONCOURSE_BITBUCKET_CLOUD_AUTH_REPOSITORY]
+    #export CONCOURSE_BITBUCKET_CLOUD_AUTH_REPOSITORY=
 
     # Override default endpoint AuthURL for Bitbucket Cloud
-    #export CONCOURSE_BITBUCKET_CLOUD_AUTH_AUTH_URL]
+    #export CONCOURSE_BITBUCKET_CLOUD_AUTH_AUTH_URL=
 
     # Override default endpoint TokenURL for Bitbucket Cloud
-    #export CONCOURSE_BITBUCKET_CLOUD_AUTH_TOKEN_URL]
+    #export CONCOURSE_BITBUCKET_CLOUD_AUTH_TOKEN_URL=
 
     # Override default API endpoint URL for Bitbucket Cloud
-    # Cloud [$CONCOURSE_BITBUCKET_CLOUD_AUTH_API_URL]
+    # Cloud [$CONCOURSE_BITBUCKET_CLOUD_AUTH_API_URL=
 
     # Application consumer key for enabling Bitbucket OAuth
-    #export CONCOURSE_BITBUCKET_SERVER_AUTH_CONSUMER_KEY]
+    #export CONCOURSE_BITBUCKET_SERVER_AUTH_CONSUMER_KEY=
 
     # Path to application private key for enabling Bitbucket OAuth
-    #export CONCOURSE_BITBUCKET_SERVER_AUTH_PRIVATE_KEY]
+    #export CONCOURSE_BITBUCKET_SERVER_AUTH_PRIVATE_KEY=
 
     # Endpoint for Bitbucket Server
-    #export CONCOURSE_BITBUCKET_SERVER_AUTH_ENDPOINT]
+    #export CONCOURSE_BITBUCKET_SERVER_AUTH_ENDPOINT=
 
     # Bitbucket users that are allowed to log in
-    #export CONCOURSE_BITBUCKET_SERVER_AUTH_USER]
+    #export CONCOURSE_BITBUCKET_SERVER_AUTH_USER=
 
     # Bitbucket projects whose members are allowed to log in
-    #export CONCOURSE_BITBUCKET_SERVER_AUTH_PROJECT]
+    #export CONCOURSE_BITBUCKET_SERVER_AUTH_PROJECT=
 
     # Bitbucket repositories whose members are allowed to log in
-    #export CONCOURSE_BITBUCKET_SERVER_AUTH_REPOSITORY]
+    #export CONCOURSE_BITBUCKET_SERVER_AUTH_REPOSITORY=
 
     # Name for this auth method on the web UI.
-    #export CONCOURSE_GENERIC_OAUTH_DISPLAY_NAME]
+    #export CONCOURSE_GENERIC_OAUTH_DISPLAY_NAME=
 
     # Application client ID for enabling generic OAuth.
-    #export CONCOURSE_GENERIC_OAUTH_CLIENT_ID]
+    #export CONCOURSE_GENERIC_OAUTH_CLIENT_ID=
 
     # Application client secret for enabling generic OAuth.
-    #export CONCOURSE_GENERIC_OAUTH_CLIENT_SECRET]
+    #export CONCOURSE_GENERIC_OAUTH_CLIENT_SECRET=
 
     # Generic OAuth provider AuthURL endpoint.
-    #export CONCOURSE_GENERIC_OAUTH_AUTH_URL]
+    #export CONCOURSE_GENERIC_OAUTH_AUTH_URL=
 
     # Parameter to pass to the authentication server AuthURL.
     # Can be specified multiple times.
-    #export CONCOURSE_GENERIC_OAUTH_AUTH_URL_PARAM]
+    #export CONCOURSE_GENERIC_OAUTH_AUTH_URL_PARAM=
 
     # Optional scope required to authorize user
-    #export CONCOURSE_GENERIC_OAUTH_SCOPE]
+    #export CONCOURSE_GENERIC_OAUTH_SCOPE=
 
     # Generic OAuth provider TokenURL endpoint.
-    #export CONCOURSE_GENERIC_OAUTH_TOKEN_URL]
+    #export CONCOURSE_GENERIC_OAUTH_TOKEN_URL=
 
     # PEM-encoded CA certificate string
-    #export CONCOURSE_GENERIC_OAUTH_CA_CERT]
+    #export CONCOURSE_GENERIC_OAUTH_CA_CERT=
 
     # Ignore warnings about not configuring auth
-    #export CONCOURSE_NO_REALLY_I_DONT_WANT_ANY_AUTH]
+    #export CONCOURSE_NO_REALLY_I_DONT_WANT_ANY_AUTH=
 
     # Application client ID for enabling UAA OAuth.
-    #export CONCOURSE_UAA_AUTH_CLIENT_ID]
+    #export CONCOURSE_UAA_AUTH_CLIENT_ID=
 
     # Application client secret for enabling UAA OAuth.
-    #export CONCOURSE_UAA_AUTH_CLIENT_SECRET]
+    #export CONCOURSE_UAA_AUTH_CLIENT_SECRET=
 
     # UAA AuthURL endpoint.
-    #export CONCOURSE_UAA_AUTH_AUTH_URL]
+    #export CONCOURSE_UAA_AUTH_AUTH_URL=
 
     # UAA TokenURL endpoint.
-    #export CONCOURSE_UAA_AUTH_TOKEN_URL]
+    #export CONCOURSE_UAA_AUTH_TOKEN_URL=
 
     # Space GUID for a CF space whose developers will have access.
-    #export CONCOURSE_UAA_AUTH_CF_SPACE]
+    #export CONCOURSE_UAA_AUTH_CF_SPACE=
 
     # CF API endpoint.
-    #export CONCOURSE_UAA_AUTH_CF_URL]
+    #export CONCOURSE_UAA_AUTH_CF_URL=
 
     # Path to CF PEM-encoded CA certificate file.
-    #export CONCOURSE_UAA_AUTH_CF_CA_CERT]
+    #export CONCOURSE_UAA_AUTH_CF_CA_CERT=
 
     # Name for this auth method on the web UI.
-    #export CONCOURSE_GENERIC_OAUTH_OIDC_DISPLAY_NAME]
+    #export CONCOURSE_GENERIC_OAUTH_OIDC_DISPLAY_NAME=
 
     # Application client ID for enabling generic OAuth with OIDC.
-    #export CONCOURSE_GENERIC_OAUTH_OIDC_CLIENT_ID]
+    #export CONCOURSE_GENERIC_OAUTH_OIDC_CLIENT_ID=
 
     # Application client secret for enabling generic OAuth with OIDC.
-    #export CONCOURSE_GENERIC_OAUTH_OIDC_CLIENT_SECRET]
+    #export CONCOURSE_GENERIC_OAUTH_OIDC_CLIENT_SECRET=
 
     # UserID required to authorize user. Can be specified multiple times.
-    #export CONCOURSE_GENERIC_OAUTH_OIDC_USER_ID]
+    #export CONCOURSE_GENERIC_OAUTH_OIDC_USER_ID=
 
     # Groups required to authorize user. Can be specified multiple times.
-    #export CONCOURSE_GENERIC_OAUTH_OIDC_GROUPS]
+    #export CONCOURSE_GENERIC_OAUTH_OIDC_GROUPS=
 
     # Optional groups name to override default value returned by OIDC provider.
-    #export CONCOURSE_GENERIC_OAUTH_OIDC_CUSTOM_GROUPS_NAME]
+    #export CONCOURSE_GENERIC_OAUTH_OIDC_CUSTOM_GROUPS_NAME=
 
     # Generic OAuth OIDC provider AuthURL endpoint.
-    #export CONCOURSE_GENERIC_OAUTH_OIDC_AUTH_URL]
+    #export CONCOURSE_GENERIC_OAUTH_OIDC_AUTH_URL=
 
     # Parameter to pass to the authentication server AuthURL.
     # Can be specified multiple times.
-    #export CONCOURSE_GENERIC_OAUTH_OIDC_AUTH_URL_PARAM]
+    #export CONCOURSE_GENERIC_OAUTH_OIDC_AUTH_URL_PARAM=
 
     # Optional scope required to authorize user
-    #export CONCOURSE_GENERIC_OAUTH_OIDC_SCOPE]
+    #export CONCOURSE_GENERIC_OAUTH_OIDC_SCOPE=
 
     # Generic OAuth OIDC provider TokenURL endpoint.
-    #export CONCOURSE_GENERIC_OAUTH_OIDC_TOKEN_URL]
+    #export CONCOURSE_GENERIC_OAUTH_OIDC_TOKEN_URL=
 
     # PEM-encoded CA certificate string
-    #export CONCOURSE_GENERIC_OAUTH_OIDC_CA_CERT]
+    #export CONCOURSE_GENERIC_OAUTH_OIDC_CA_CERT=
 
     # Application client ID for enabling GitHub OAuth.
     export CONCOURSE_GITHUB_AUTH_CLIENT_ID=$github_auth_client_id
@@ -409,44 +409,44 @@ function server
     export CONCOURSE_GITHUB_AUTH_CLIENT_SECRET=$github_auth_client_secret
 
     # GitHub organization whose members will have access.
-    #export CONCOURSE_GITHUB_AUTH_ORGANIZATION]
+    #export CONCOURSE_GITHUB_AUTH_ORGANIZATION=
 
     # GitHub team whose members will have access.
-    #export CONCOURSE_GITHUB_AUTH_TEAM]
+    #export CONCOURSE_GITHUB_AUTH_TEAM=
 
     # GitHub user to permit access.
     export CONCOURSE_GITHUB_AUTH_USER=$github_auth_user
 
     # Override default endpoint AuthURL for Github Enterprise.
-    #export CONCOURSE_GITHUB_AUTH_AUTH_URL]
+    #export CONCOURSE_GITHUB_AUTH_AUTH_URL=
 
     # Override default endpoint TokenURL for Github Enterprise.
-    #export CONCOURSE_GITHUB_AUTH_TOKEN_URL]
+    #export CONCOURSE_GITHUB_AUTH_TOKEN_URL=
 
     # Override default API endpoint URL for Github Enterprise.
-    #export CONCOURSE_GITHUB_AUTH_API_URL]
+    #export CONCOURSE_GITHUB_AUTH_API_URL=
 
     # Application client ID for enabling GitLab OAuth.
-    #export CONCOURSE_GITLAB_AUTH_CLIENT_ID]
+    #export CONCOURSE_GITLAB_AUTH_CLIENT_ID=
 
     # Application client secret for enabling GitLab OAuth.
-    #export CONCOURSE_GITLAB_AUTH_CLIENT_SECRET]
+    #export CONCOURSE_GITLAB_AUTH_CLIENT_SECRET=
 
     # GitLab group whose members will have access.
-    #export CONCOURSE_GITLAB_AUTH_GROUP]
+    #export CONCOURSE_GITLAB_AUTH_GROUP=
 
     # Override default endpoint AuthURL for GitLab.
-    #export CONCOURSE_GITLAB_AUTH_AUTH_URL]
+    #export CONCOURSE_GITLAB_AUTH_AUTH_URL=
 
     # Override default endpoint TokenURL for GitLab.
-    #export CONCOURSE_GITLAB_AUTH_TOKEN_URL]
+    #export CONCOURSE_GITLAB_AUTH_TOKEN_URL=
 
     # Override default API endpoint URL for GitLab.
-    #export CONCOURSE_GITLAB_AUTH_API_URL]
+    #export CONCOURSE_GITLAB_AUTH_API_URL=
 
     # PostgreSQL connection string.
     # (Deprecated; set the following flags instead.)
-    #export CONCOURSE_POSTGRES_DATA_SOURCE]
+    #export CONCOURSE_POSTGRES_DATA_SOURCE=
 
     # The host to connect to. (default: 127.0.0.1)
     export CONCOURSE_POSTGRES_HOST=$server_postgres_addr
@@ -455,7 +455,7 @@ function server
     export CONCOURSE_POSTGRES_PORT=$server_postgres_port
 
     # Path to a UNIX domain socket to connect to.
-    #export CONCOURSE_POSTGRES_SOCKET]
+    #export CONCOURSE_POSTGRES_SOCKET=
 
     # The user to sign in as.
     export CONCOURSE_POSTGRES_USER=$server_postgres_user
@@ -464,256 +464,256 @@ function server
     export CONCOURSE_POSTGRES_PASSWORD=$server_postgres_pass
 
     # Whether or not to use SSL. (default: disable)
-    #export CONCOURSE_POSTGRES_SSLMODE]
+    #export CONCOURSE_POSTGRES_SSLMODE=
 
     # CA cert file location, to verify when connecting with SSL.
-    #export CONCOURSE_POSTGRES_CA_CERT]
+    #export CONCOURSE_POSTGRES_CA_CERT=
 
     # Client cert file location.
-    #export CONCOURSE_POSTGRES_CLIENT_CERT]
+    #export CONCOURSE_POSTGRES_CLIENT_CERT=
 
     # Client key file location.
-    #export CONCOURSE_POSTGRES_CLIENT_KEY]
+    #export CONCOURSE_POSTGRES_CLIENT_KEY=
 
     # Dialing timeout. (0 means wait indefinitely) (default: 5m)
-    #export CONCOURSE_POSTGRES_CONNECT_TIMEOUT]
+    #export CONCOURSE_POSTGRES_CONNECT_TIMEOUT=
 
     # The name of the database to use. (default: atc)
     export CONCOURSE_POSTGRES_DATABASE=$server_postgres_data
 
     # CredHub server address used to access secrets.
-    #export CONCOURSE_CREDHUB_URL]
+    #export CONCOURSE_CREDHUB_URL=
 
     # Path under which to namespace credential lookup. (default: /concourse)
-    #export CONCOURSE_CREDHUB_PATH_PREFIX]
+    #export CONCOURSE_CREDHUB_PATH_PREFIX=
 
     # Paths to PEM-encoded CA cert files to use to verify
     # the CredHub server SSL cert.
-    #export CONCOURSE_CREDHUB_CA_CERT]
+    #export CONCOURSE_CREDHUB_CA_CERT=
 
     # Path to the client certificate for mutual TLS authorization.
-    #export CONCOURSE_CREDHUB_CLIENT_CERT]
+    #export CONCOURSE_CREDHUB_CLIENT_CERT=
 
     # Path to the client private key for mutual TLS authorization.
-    #export CONCOURSE_CREDHUB_CLIENT_KEY]
+    #export CONCOURSE_CREDHUB_CLIENT_KEY=
 
     # Enable insecure SSL verification.
-    #export CONCOURSE_CREDHUB_INSECURE_SKIP_VERIFY]
+    #export CONCOURSE_CREDHUB_INSECURE_SKIP_VERIFY=
 
     # Client ID for CredHub authorization.
-    #export CONCOURSE_CREDHUB_CLIENT_ID]
+    #export CONCOURSE_CREDHUB_CLIENT_ID=
 
     # Client secret for CredHub authorization.
-    #export CONCOURSE_CREDHUB_CLIENT_SECRET]
+    #export CONCOURSE_CREDHUB_CLIENT_SECRET=
 
     # Enables the in-cluster client.
-    #export CONCOURSE_KUBERNETES_IN_CLUSTER]
+    #export CONCOURSE_KUBERNETES_IN_CLUSTER=
 
     # Path to Kubernetes config when running ATC outside Kubernetes.
-    #export CONCOURSE_KUBERNETES_CONFIG_PATH]
+    #export CONCOURSE_KUBERNETES_CONFIG_PATH=
 
     # Prefix to use for Kubernetes namespaces under which secrets
     # will be looked up. (default: concourse-)
-    #export CONCOURSE_KUBERNETES_NAMESPACE_PREFIX]
+    #export CONCOURSE_KUBERNETES_NAMESPACE_PREFIX=
 
     # AWS Access key ID
-    #export CONCOURSE_AWS_SECRETSMANAGER_ACCESS_KEY]
+    #export CONCOURSE_AWS_SECRETSMANAGER_ACCESS_KEY=
 
     # AWS Secret Access Key
-    #export CONCOURSE_AWS_SECRETSMANAGER_SECRET_KEY]
+    #export CONCOURSE_AWS_SECRETSMANAGER_SECRET_KEY=
 
     # AWS Session Token
-    #export CONCOURSE_AWS_SECRETSMANAGER_SESSION_TOKEN]
+    #export CONCOURSE_AWS_SECRETSMANAGER_SESSION_TOKEN=
 
     # AWS region to send requests to
-    #export AWS_REGION]
+    #export AWS_REGION=
 
     # AWS Manager secret identifier template used for pipeline specific
     # parameter (default: /concourse/{{.Team}}/{{.Pipeline}}/{{.Secret}})
-    #export CONCOURSE_AWS_SECRETSMANAGER_PIPELINE_SECRET_TEMPLATE]
+    #export CONCOURSE_AWS_SECRETSMANAGER_PIPELINE_SECRET_TEMPLATE=
 
     # AWS SSM Manager secret identifier  template used for team specific
     # parameter (default: /concourse/{{.Team}}/{{.Secret}})
-    #export CONCOURSE_AWS_SECRETSMANAGER_TEAM_SECRET_TEMPLATE]
+    #export CONCOURSE_AWS_SECRETSMANAGER_TEAM_SECRET_TEMPLATE=
 
     # AWS Access key ID
-    #export CONCOURSE_AWS_SSM_ACCESS_KEY]
+    #export CONCOURSE_AWS_SSM_ACCESS_KEY=
 
     # AWS Secret Access Key
-    #export CONCOURSE_AWS_SSM_SECRET_KEY]
+    #export CONCOURSE_AWS_SSM_SECRET_KEY=
 
     # AWS Session Token
-    #export CONCOURSE_AWS_SSM_SESSION_TOKEN]
+    #export CONCOURSE_AWS_SSM_SESSION_TOKEN=
 
     # AWS region to send requests to
-    #export AWS_REGION]
+    #export AWS_REGION=
 
     # AWS SSM parameter name template used for pipeline specific parameter
     # (default: /concourse/{{.Team}}/{{.Pipeline}}/{{.Secret}})
-    #export CONCOURSE_AWS_SSM_PIPELINE_SECRET_TEMPLATE]
+    #export CONCOURSE_AWS_SSM_PIPELINE_SECRET_TEMPLATE=
 
     # AWS SSM parameter name template used for team specific parameter
     # (default: /concourse/{{.Team}}/{{.Secret}})
-    #export CONCOURSE_AWS_SSM_TEAM_SECRET_TEMPLATE]
+    #export CONCOURSE_AWS_SSM_TEAM_SECRET_TEMPLATE=
 
     # Vault server address used to access secrets.
-    #export CONCOURSE_VAULT_URL]
+    #export CONCOURSE_VAULT_URL=
 
     # Path under which to namespace credential lookup. (default: /concourse)
-    #export CONCOURSE_VAULT_PATH_PREFIX]
+    #export CONCOURSE_VAULT_PATH_PREFIX=
 
     # If the cache is enabled, and this is set, override secrets
     # lease duration with a maximum value
-    #export CONCOURSE_VAULT_MAX_LEASE]
+    #export CONCOURSE_VAULT_MAX_LEASE=
 
     # Path to a PEM-encoded CA cert file to use to verify
     # the vault server SSL cert.
-    #export CONCOURSE_VAULT_CA_CERT]
+    #export CONCOURSE_VAULT_CA_CERT=
 
     # Path to a directory of PEM-encoded CA cert files to verify
     # the vault server SSL cert.
-    #export CONCOURSE_VAULT_CA_PATH]
+    #export CONCOURSE_VAULT_CA_PATH=
 
     # Path to the client certificate for Vault authorization.
-    #export CONCOURSE_VAULT_CLIENT_CERT]
+    #export CONCOURSE_VAULT_CLIENT_CERT=
 
     # Path to the client private key for Vault authorization.
-    #export CONCOURSE_VAULT_CLIENT_KEY]
+    #export CONCOURSE_VAULT_CLIENT_KEY=
 
     # If set, is used to set the SNI host when connecting via TLS.
-    #export CONCOURSE_VAULT_SERVER_NAME]
+    #export CONCOURSE_VAULT_SERVER_NAME=
 
     # Enable insecure SSL verification.
-    #export CONCOURSE_VAULT_INSECURE_SKIP_VERIFY]
+    #export CONCOURSE_VAULT_INSECURE_SKIP_VERIFY=
 
     # Client token for accessing secrets within the Vault server.
-    #export CONCOURSE_VAULT_CLIENT_TOKEN]
+    #export CONCOURSE_VAULT_CLIENT_TOKEN=
 
     # Auth backend to use for logging in to Vault.
-    #export CONCOURSE_VAULT_AUTH_BACKEND]
+    #export CONCOURSE_VAULT_AUTH_BACKEND=
 
     # Time after which to force a re-login.
     # If not set, the token will just be continuously renewed.
-    #export CONCOURSE_VAULT_AUTH_BACKEND_MAX_TTL]
+    #export CONCOURSE_VAULT_AUTH_BACKEND_MAX_TTL=
 
     # The maximum time between retries when logging in or re-authing a secret.
     # (default: 5m)
-    #export CONCOURSE_VAULT_RETRY_MAX]
+    #export CONCOURSE_VAULT_RETRY_MAX=
 
     # The initial time between retries when logging in or re-authing a secret.
     # (default: 1s)
-    #export CONCOURSE_VAULT_RETRY_INITIAL]
+    #export CONCOURSE_VAULT_RETRY_INITIAL=
 
     # Paramter to pass when logging in via the backend.
     # Can be specified multiple times.
-    #export CONCOURSE_VAULT_AUTH_PARAM]
+    #export CONCOURSE_VAULT_AUTH_PARAM=
 
     # Don't actually do any automatic scheduling or checking.
-    #export CONCOURSE_NOOP]
+    #export CONCOURSE_NOOP=
 
     # A Garden API endpoint to register as a worker.
-    #export CONCOURSE_WORKER_GARDEN_URL]
+    #export CONCOURSE_WORKER_GARDEN_URL=
 
     # A Baggageclaim API endpoint to register with the worker.
-    #export CONCOURSE_WORKER_BAGGAGECLAIM_URL]
+    #export CONCOURSE_WORKER_BAGGAGECLAIM_URL=
 
     # A resource type to advertise for the worker.
     # Can be specified multiple times.
-    #export CONCOURSE_WORKER_RESOURCE]
+    #export CONCOURSE_WORKER_RESOURCE=
 
     # Host string to attach to emitted metrics.
-    #export CONCOURSE_METRICS_HOST_NAME]
+    #export CONCOURSE_METRICS_HOST_NAME=
 
     # A key-value attribute to attach to emitted metrics.
     # Can be specified multiple times.
-    #export CONCOURSE_METRICS_ATTRIBUTE]
+    #export CONCOURSE_METRICS_ATTRIBUTE=
 
     # Yeller API key. If specified, all errors logged will be emitted.
-    #export CONCOURSE_YELLER_API_KEY]
+    #export CONCOURSE_YELLER_API_KEY=
 
     # Environment to tag on all Yeller events emitted.
-    #export CONCOURSE_YELLER_ENVIRONMENT]
+    #export CONCOURSE_YELLER_ENVIRONMENT=
 
     # Datadog agent host to expose dogstatsd metrics
-    #export CONCOURSE_DATADOG_AGENT_HOST]
+    #export CONCOURSE_DATADOG_AGENT_HOST=
 
     # Datadog agent port to expose dogstatsd metrics
-    #export CONCOURSE_DATADOG_AGENT_PORT]
+    #export CONCOURSE_DATADOG_AGENT_PORT=
 
     # Prefix for all metrics to easily find them in Datadog
-    #export CONCOURSE_DATADOG_PREFIX]
+    #export CONCOURSE_DATADOG_PREFIX=
 
     # InfluxDB server address to emit points to.
-    #export CONCOURSE_INFLUXDB_URL]
+    #export CONCOURSE_INFLUXDB_URL=
 
     # InfluxDB database to write points to.
-    #export CONCOURSE_INFLUXDB_DATABASE]
+    #export CONCOURSE_INFLUXDB_DATABASE=
 
     # InfluxDB server username.
-    #export CONCOURSE_INFLUXDB_USERNAME]
+    #export CONCOURSE_INFLUXDB_USERNAME=
 
     # InfluxDB server password.
-    #export CONCOURSE_INFLUXDB_PASSWORD]
+    #export CONCOURSE_INFLUXDB_PASSWORD=
 
     # Skip SSL verification when emitting to InfluxDB.
-    #export CONCOURSE_INFLUXDB_INSECURE_SKIP_VERIFY]
+    #export CONCOURSE_INFLUXDB_INSECURE_SKIP_VERIFY=
 
     # Emit metrics to logs.
-    #export CONCOURSE_EMIT_TO_LOGS]
+    #export CONCOURSE_EMIT_TO_LOGS=
 
     # New Relic Account ID
-    #export CONCOURSE_NEWRELIC_ACCOUNT_ID]
+    #export CONCOURSE_NEWRELIC_ACCOUNT_ID=
 
     # New Relic Insights API Key
-    #export CONCOURSE_NEWRELIC_API_KEY]
+    #export CONCOURSE_NEWRELIC_API_KEY=
 
     # An optional prefix for emitted New Relic events
-    #export CONCOURSE_NEWRELIC_SERVICE_PREFIX]
+    #export CONCOURSE_NEWRELIC_SERVICE_PREFIX=
 
     # IP to listen on to expose Prometheus metrics.
-    #export CONCOURSE_PROMETHEUS_BIND_IP]
+    #export CONCOURSE_PROMETHEUS_BIND_IP=
 
     # Port to listen on to expose Prometheus metrics.
-    #export CONCOURSE_PROMETHEUS_BIND_PORT]
+    #export CONCOURSE_PROMETHEUS_BIND_PORT=
 
     # Riemann server address to emit metrics to.
-    #export CONCOURSE_RIEMANN_HOST]
+    #export CONCOURSE_RIEMANN_HOST=
 
     # Port of the Riemann server to emit metrics to. (default: 5555)
-    #export CONCOURSE_RIEMANN_PORT]
+    #export CONCOURSE_RIEMANN_PORT=
 
     # An optional prefix for emitted Riemann services
-    #export CONCOURSE_RIEMANN_SERVICE_PREFIX]
+    #export CONCOURSE_RIEMANN_SERVICE_PREFIX=
 
     # Tag to attach to emitted metrics.
     # Can be specified multiple times.
-    #export CONCOURSE_RIEMANN_TAG]
+    #export CONCOURSE_RIEMANN_TAG=
 
     # The value to set for X-Frame-Options. If omitted, the header is not set.
-    #export CONCOURSE_X_FRAME_OPTIONS]
+    #export CONCOURSE_X_FRAME_OPTIONS=
 
     # Interval on which to perform garbage collection. (default: 30s)
-    #export CONCOURSE_GC_INTERVAL]
+    #export CONCOURSE_GC_INTERVAL=
 
     # Maximum number of delete operations to have in flight per worker.
     # (default: 50)
-    #export CONCOURSE_GC_WORKER_CONCURRENCY]
+    #export CONCOURSE_GC_WORKER_CONCURRENCY=
 
     # Minimum level of logs to see. (default: info)
-    #export CONCOURSE_TSA_LOG_LEVEL]
+    #export CONCOURSE_TSA_LOG_LEVEL=
 
     # IP address on which to listen for SSH. (default: 0.0.0.0)
-    #export CONCOURSE_TSA_BIND_IP]
+    #export CONCOURSE_TSA_BIND_IP=
 
     # Port on which to listen for SSH. (default: 2222)
-    #export CONCOURSE_TSA_BIND_PORT]
+    #export CONCOURSE_TSA_BIND_PORT=
 
     # Port on which to listen for TSA pprof server. (default: 8089)
-    #export CONCOURSE_TSA_BIND_DEBUG_PORT]
+    #export CONCOURSE_TSA_BIND_DEBUG_PORT=
 
     # IP address of this TSA, reachable by the ATCs. Used for forwarded worker
     # addresses.
-    #export CONCOURSE_TSA_PEER_IP]
+    #export CONCOURSE_TSA_PEER_IP=
 
     # Path to private key to use for the SSH server.
     export CONCOURSE_TSA_HOST_KEY=$server_key_private
@@ -724,20 +724,20 @@ function server
 
     # Path to file containing keys to authorize, in SSH authorized_keys format
     # (one public key per line).
-    #export CONCOURSE_TSA_TEAM_AUTHORIZED_KEYS]
+    #export CONCOURSE_TSA_TEAM_AUTHORIZED_KEYS=
 
     # ATC API endpoints to which workers will be registered.
-    #export CONCOURSE_TSA_ATC_URL]
+    #export CONCOURSE_TSA_ATC_URL=
 
     # Path to private key to use when signing tokens in reqests to the
     # ATC during registration.
-    #export CONCOURSE_TSA_SESSION_SIGNING_KEY]
+    #export CONCOURSE_TSA_SESSION_SIGNING_KEY=
 
     # interval on which to heartbeat workers to the ATC (default: 30s)
-    #export CONCOURSE_TSA_HEARTBEAT_INTERVAL]
+    #export CONCOURSE_TSA_HEARTBEAT_INTERVAL=
 
     # Yeller API key. If specified, all errors logged will be emitted.
-    #export CONCOURSE_TSA_YELLER_API_KEY]
+    #export CONCOURSE_TSA_YELLER_API_KEY=
 
     # Environment to tag on all Yeller events emitted.
     #export CONCOURSE_TSA_YELLER_ENVIRONMENT]
@@ -1051,7 +1051,7 @@ function worker
     #export CONCOURSE_YELLER_API_KEY=
 
     # Environment to tag on all Yeller events emitted.
-    #export CONCOURSE_YELLER_ENVIRONMENT]
+    #export CONCOURSE_YELLER_ENVIRONMENT=
 
     message "starting concourse worker '$name'"
     execute worker
