@@ -1110,7 +1110,9 @@ function execute
     if [ "${plat}" != "windows" ]; then
 	$bin $1
     else
-	(cd ${bin_path}; cmd.exe /c ${bin_name} $1)
+	local clean_env=`env | grep CONCOURSE`
+	clean_env=`echo $clean_env | tr '\n' "&" | sed "s/&/ & set /g"`
+	(cd ${bin_path}; cmd.exe /c "set ${clean_env} & ${bin_name} $1")
     fi
 }
 
