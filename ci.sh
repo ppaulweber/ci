@@ -118,8 +118,10 @@ if [ "$plat" == "linux" ]; then
     fi
 fi
 
+bin_name=${bin_name}${bin_ext}
+
 file=concourse_${plat}_${arch}${bin_ext}
-bin=${bin_path}/${bin_name}${bin_ext}
+bin=${bin_path}/${bin_name}
 app=`basename $0`
 cwd=`pwd -P`
 dir=`dirname $(realpath $0)`
@@ -1107,7 +1109,7 @@ function execute
     if [ "${plat}" != "windows" ]; then
 	$bin $1
     else
-	(cd ${bin_path}; cmd /c ${bin_name}${bin_exe} $1)
+	(cd ${bin_path}; cmd /c ${bin_name} $1)
     fi
 }
 
