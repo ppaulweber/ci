@@ -1102,17 +1102,11 @@ function execute
 
 function start
 {
-    if [ "${plat}" != "windows" ]; then
-	$bin $1
-    else
-	(cd ${bin_path}; cmd /c ${bin_name}${bin_exe})
-    fi
-
     if [ "${plat}" == "linux" ]; then
 	iptables -I FORWARD -j ACCEPT
     fi
 
-    ./ci.sh worker &
+    worker
 }
 
 function stop
@@ -1121,7 +1115,7 @@ function stop
 	return
     fi
 
-    ./ci.sh retire
+    retire
 
     sleep 5
 
