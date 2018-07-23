@@ -104,19 +104,20 @@ if [ "$OSTYPE" == "linux-gnu" ]; then
     plat="linux"
 elif [ "$OSTYPE" == "darwin*" ]; then
     plat="darwin"
-elif [ "$OSTYPE" == "cygwin" ]; then
+elif [ "$OSTYPE" == "cygwin" ] || [ "$OSTYPE" == "msys" ]; then
     plat="windows"
     bin_ext=".exe"
 else
     error "unsupported system '$OSTYPE'"
 fi
 
-if [ "$plat" == "linux" ]; then
-    # detect linux sub-system on windows
-    if grep -q Microsoft /proc/version; then
-        plat="windows"
-    fi
-fi
+# if [ "$plat" == "linux" ]; then
+#     # detect linux sub-system on windows
+#     if grep -q Microsoft /proc/version; then
+#         plat="windows"
+# 	bin_ext=".exe"
+#     fi
+# fi
 
 bin_name=${bin_name}${bin_ext}
 
@@ -1109,7 +1110,7 @@ function execute
     if [ "${plat}" != "windows" ]; then
 	$bin $1
     else
-	(cd ${bin_path}; cmd /c ${bin_name} $1)
+	(cd ${bin_path}; cmd.exe /c ${bin_name} $1)
     fi
 }
 
@@ -1129,13 +1130,13 @@ function stop
     if [ "${plat}" != "windows" ]; then
 	sleep 5
     else
-	cmd /c timeout 5 > nul
+	cmd.exe /c timeout 5 > nul
     fi
 
     if [ "${plat}" != "windows" ]; then
 	/sbin/reboot
     else
-	cmd /c shutdown /r /t 0
+	cmd.exe /c shutdown /r /t 0
     fi
 }
 
