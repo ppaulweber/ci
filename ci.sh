@@ -64,7 +64,7 @@ function main
     elif [ "$cmd" = "retire" ]; then
 	$cmd
     elif [ "$cmd" = "land" ]; then
-	retire
+	retire land
     elif [ "$cmd" = "start" ]; then
 	$cmd
     elif [ "$cmd" = "stop" ]; then
@@ -1069,13 +1069,12 @@ function retire
     fi
 
     local name=`cat ${worker_dir}/.name`
-    echo "$name" > $worker_dir/.name
 
     # API based on https://concourse-ci.org version 3.14.1
     # 'retire' equals 'land'
 
     # The name of the worker you wish to retire.
-    #export CONCOURSE_NAME=
+    export CONCOURSE_NAME=$name
 
     # TSA host to forward the worker through. Can be specified
     # multiple times. (default: 127.0.0.1:2222)
@@ -1087,8 +1086,13 @@ function retire
     # File containing the private key to use when authenticating to the TSA.
     export CONCOURSE_TSA_WORKER_PRIVATE_KEY=$worker_key_private
 
-    message "retiring concourse worker '$name'"
-    execute retire-worker
+    if [ "$1" == "land" ]; then
+	message "landing concourse worker '$name'"
+	execute land-worker
+    else
+	message "retiring concourse worker '$name'"
+	execute retire-worker
+    fi
 }
 
 function execute
