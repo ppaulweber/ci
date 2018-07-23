@@ -111,6 +111,13 @@ else
     error "unsupported system '$OSTYPE'"
 fi
 
+if [ "$plat" == "linux" ]; then
+    # detect linux sub-system on windows
+    if grep -q Microsoft /proc/version; then
+        plat="windows"
+    fi
+fi
+
 file=concourse_${plat}_${arch}${bin_ext}
 bin=${bin_path}/${bin_name}${bin_ext}
 app=`basename $0`
