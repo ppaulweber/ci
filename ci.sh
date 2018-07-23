@@ -1096,7 +1096,7 @@ function execute
     if [ "${plat}" != "windows" ]; then
 	$bin $1
     else
-	(cd ${bin_path}; cmd /c ${bin_name}${bin_exe})
+	(cd ${bin_path}; cmd /c ${bin_name}${bin_exe} $1)
     fi
 }
 
