@@ -753,7 +753,7 @@ function worker
     check_if_bin_exists_else_fetch_it
     mkdir -p $worker_dir
 
-    local name=$worker_name.$datetimespamp
+    local name=$worker_name.$datetimestamp
     echo "$name" > $worker_dir/.name
 
     # API based on https://concourse-ci.org version 3.14.1
