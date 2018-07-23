@@ -1111,15 +1111,19 @@ function start
 
 function stop
 {
-    if [ "${plat}" == "windows" ]; then
-	return
-    fi
-
     retire
 
-    sleep 5
+    if [ "${plat}" != "windows" ]; then
+	sleep 5
+    else
+	cmd /c timeout 5 > nul
+    fi
 
-    /sbin/reboot
+    if [ "${plat}" != "windows" ]; then
+	/sbin/reboot
+    else
+	cmd /c shutdown /r /t 0
+    fi
 }
 
 if [ "$dir" != "$cwd" ]; then
